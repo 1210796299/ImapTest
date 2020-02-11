@@ -39,9 +39,9 @@ import org.apache.james.user.lib.AbstractUsersRepository;
  * @author oyx
  * @date 2020-01-06 17:37
  */
-public class MySystem {
+public class HHSystem {
 	private static SimpleDomainList domainList = null;
-	private static final Domain DOMAIN = Domain.of("hh.com");
+	private static final Domain DOMAIN = Domain.of("hhxdtech.com.cn");
 	private AbstractUsersRepository usersRepository;
 	protected Authorizator authorizator;
 	protected Authenticator authenticator;
@@ -108,9 +108,7 @@ public class MySystem {
 		domainList = new SimpleDomainList();
 		domainList.addDomain(DOMAIN);
 
-		HHUsersRepository repos = new HHUsersRepository(domainList);
-
-		return repos;
+		return new HHUsersRepository(domainList);
 	}
 
 	public HierarchicalConfiguration<ImmutableNode> getConfiguration() {
@@ -121,8 +119,4 @@ public class MySystem {
 		this.configuration = configuration;
 	}
 
-	public static void main(String[] args) throws Exception {
-		MySystem system = new MySystem();
-		system.init();
-	}
 }

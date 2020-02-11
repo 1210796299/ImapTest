@@ -1,0 +1,70 @@
+<project name="hh-imap" basedir="." default="dist">
+    <property name="src" value="src"/>
+    <property name="bin" value="bin"/>
+    <property name="dist" value="hh-imap"/>
+    <property name="config" value="${dist}/config"/>
+    <property name="lib" value="${src}/config/lib"/>
+    <property name="classes" value="${dist}/classes"/>
+    <property name="jar" value="${dist}/hh-imap.jar"/>
+    <path id="classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${dist}">
+        </delete>
+    </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${config}"/>
+        <mkdir dir="${classes}"/>
+    </target>
+    <target name="compile" depends="init">
+        <javac target="1.8" srcdir="${src}" verbose="true" destdir="${classes}" classpathref="classpath" debug="true">
+            <compilerarg line="-encoding UTF-8 "/>
+        </javac>
+
+    </target>
+    <target name="jar" depends="compile">
+        <pathconvert property="mf.classpath" pathsep=" ">
+            <mapper>
+                <chainedmapper>
+                    <!-- jar包文件只留文件名，去掉目录信息 -->
+                    <flattenmapper/>
+                    <!-- add lib/ prefix -->
+                    <globmapper from="*" to="config/lib/*"/>
+                </chainedmapper>
+            </mapper>
+            <path refid="classpath"/>
+        </pathconvert>
+
+        <copy file="${src}/logback.xml" todir="${classes}"/>
+        <copy file="${src}/log4j.properties" todir="${classes}"/>
+        <copy file="${src}/config/imapserver.xml" todir="${classes}"/>
+        <jar destfile="${jar}" basedir="${classes}">
+            <manifest>
+
+                <attribute name="Class-Path" value="${mf.classpath}"/>
+            </manifest>
+        </jar>
+        <delete dir="${classes}">
+        </delete>
+
+
+    </target>
+    <target name="dist" depends="jar">
+
+        <copy todir="${config}">
+            <fileset dir="${src}/config">
+            </fileset>
+        </copy>
+        <!--<copy todir="${dist}/conf">-->
+        <!--<fileset dir="conf">-->
+        <!--</fileset>-->
+        <!--</copy>-->
+        <copy file="imap.sh" todir="${dist}"/>
+    </target>
+
+
+</project>

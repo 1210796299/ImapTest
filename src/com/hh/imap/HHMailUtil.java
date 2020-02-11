@@ -3,6 +3,8 @@ package com.hh.imap;
 import com.hh.imap.mailbox.mail.model.HHMailBoxMessage;
 import com.hh.imap.mailbox.mail.service.bean.Mail;
 import com.hh.imap.mailbox.mail.service.bean.Mail_Dir;
+import com.hh.wframe.util.ConfigUtil;
+import com.hh.wframe.util.PoolUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.input.TeeInputStream;
 import org.apache.james.mailbox.MessageUid;
@@ -24,6 +26,7 @@ import sun.security.action.GetPropertyAction;
 import javax.mail.Flags;
 import javax.mail.util.SharedFileInputStream;
 import java.io.*;
+import java.net.URISyntaxException;
 import java.security.AccessController;
 import java.util.Date;
 import java.util.UUID;
@@ -42,6 +45,11 @@ public class HHMailUtil {
 		if (!imapPath.exists()) {
 			imapPath.mkdirs();
 		}
+	}
+
+	public static void main(String[] args) throws URISyntaxException {
+		System.out.println(ConfigUtil.getWebDir());
+		System.out.println(PoolUtil.getJdbcFile().getAbsolutePath());
 	}
 
 
