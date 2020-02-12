@@ -24,7 +24,6 @@ import java.util.Objects;
 public class HHIMAPServer {
 	private HHSystem system;
 	private HierarchicalConfiguration<ImmutableNode> configuration;
-	private DefaultMetricFactory metricFactory;
 	private FileSystemImpl fileSystem;
 
 	public static void main(String[] args) throws Exception {
