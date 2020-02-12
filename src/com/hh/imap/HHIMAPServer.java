@@ -14,6 +14,7 @@ import org.apache.velocity.texen.util.FileUtil;
 import org.jboss.netty.util.HashedWheelTimer;
 
 import java.io.File;
+import java.util.Objects;
 
 /**
  * @author oyx
@@ -29,7 +30,6 @@ public class HHIMAPServer {
 	public static void main(String[] args) throws Exception {
 		HHIMAPServer server = new HHIMAPServer();
 		server.start();
-
 	}
 
 
@@ -48,7 +48,6 @@ public class HHIMAPServer {
 
 	private void initSystem() throws Exception {
 		system = new HHSystem();
-//		String config = FileUtil.file(".", "config").getCanonicalPath();
 		//配置文件目录
 		Configuration c = Configuration.builder()
 				.workingDirectory("")

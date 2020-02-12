@@ -58,6 +58,12 @@ public class HHUsersRepository extends AbstractUsersRepository implements HHTran
 			hhUsersService.addOne(mailAddr);
 		} catch (Exception e) {
 			LOGGER.debug("Failed to save user", e);
+		}finally {
+			try {
+				PoolUtil.put();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -99,6 +105,12 @@ public class HHUsersRepository extends AbstractUsersRepository implements HHTran
 		} catch (Exception e) {
 			LOGGER.debug("Failed to find user", e);
 			throw new UsersRepositoryException("Failed to find user" + username.asString(), e);
+		}finally {
+			try {
+				PoolUtil.put();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -125,6 +137,12 @@ public class HHUsersRepository extends AbstractUsersRepository implements HHTran
 		} catch (Exception e) {
 			LOGGER.debug("Failed to find user", e);
 			throw new UsersRepositoryException("Failed to count users", e);
+		}finally {
+			try {
+				PoolUtil.put();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -140,6 +158,12 @@ public class HHUsersRepository extends AbstractUsersRepository implements HHTran
 		} catch (Exception e) {
 			LOGGER.debug("Failed to find user", e);
 			throw new UsersRepositoryException("Failed to list users", e);
+		}finally {
+			try {
+				PoolUtil.put();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

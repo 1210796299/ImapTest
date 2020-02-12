@@ -28,8 +28,8 @@ start(){
   if [ $? -eq 0 ]; then
     echo "${APP_NAME} is already running. pid=${pid}"
   else
+    echo  "启动${APP_NAME}"
     java -cp hh-imap.jar com.hh.imap.HHIMAPServer &
-    echo  "${APP_NAME}启动完毕"
   fi
 }
 

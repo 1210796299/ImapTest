@@ -67,7 +67,10 @@ public class HHMailUtil {
 		File file = null;
 		SharedFileInputStream contentIn = null;
 		file = File.createTempFile("imap", ".msg", imapPath);
-		try (FileOutputStream out = new FileOutputStream(file); BufferedOutputStream bufferedOut = new BufferedOutputStream(out); BufferedInputStream tmpMsgIn = new BufferedInputStream(new TeeInputStream(msgIn, bufferedOut)); BodyOffsetInputStream bIn = new BodyOffsetInputStream(tmpMsgIn)) {
+		try (FileOutputStream out = new FileOutputStream(file);
+			 BufferedOutputStream bufferedOut = new BufferedOutputStream(out);
+			 BufferedInputStream tmpMsgIn = new BufferedInputStream(new TeeInputStream(msgIn, bufferedOut));
+			 BodyOffsetInputStream bIn = new BodyOffsetInputStream(tmpMsgIn)) {
 			final MimeTokenStream parser = getParser(bIn);
 			readHeader(parser);
 			final MaximalBodyDescriptor descriptor = (MaximalBodyDescriptor) parser.getBodyDescriptor();

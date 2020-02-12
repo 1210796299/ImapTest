@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-    <!--系统内置参数  -->
-    <param name="USER_DEFAULT">admin</param>
-    <param name="PASS_DEFAULT">123456</param>
-    <param name="NEED_CODE_DEFAULT">false</param>
-    <param name="PRODUCT_CLASS_DEFAULT">com.hh.wframe.core.WebFrameProduct</param>
-    <param name="FAVICON_ICO">wlib/frame/hhlogo.png</param>
-    <param name="ROLES">ADMIN[系统管理员],USR_MGR[用户管理]</param>
-    <param name="LOG_TYPE">LOGIN,LOGOUT</param>
-    <param name="LOGIN_PLUGIN_TYPE">LDAP_LOGINPLUGIN:LDAP登录插件</param>
-    <param name="ATCH_DIR">/home/web/apache-tomcat-7.0.72/bin/D:\\</param>
-    <param name="ADMIN_ATT_MGR">true</param>
-    <!--是否显示管理数据菜单   -->
-    <param name="MANAGER_DATA">true</param>
-    <!--用户添加自定义参数 -->
+	<!--系统内置参数  -->
+	<param name="USER_DEFAULT"> HH0076 </param>
+	<param name="PASS_DEFAULT"> 123456 </param>
+	<param name="NEED_CODE_DEFAULT"> false </param>
+	<param name="PRODUCT_CLASS_DEFAULT"> com.hh.oa.common.OaProduct </param>
+	<param name="FAVICON_ICO"> wlib/frame/hhlogo.png </param>
+	<param name="ROLES">
+		ADMIN[系统管理员],HR_MGR[人事管理员],MAIL_MGR[邮件管理员],MAIL_USR[邮件用户],PM_MGR[项目管理员]
+		,HH_USR[OA用户]
+		,DOC_MGR[文档管理员],DOC_USR[文档用户]
+	</param>
+	<param name="ATCH_DIR">H:\Temp\attach</param>
+	<!--清理无效附件的时间, HH:mm-->
+	<param name="ATCH_CLEAN_TIME">02:00</param>
+	<!--清理无效附件的周期(天)-->
+	<param name="ATCH_CLEAN_PERIOD">7</param>
+	<param name="LOG_TYPE"> LOGIN,LOGOUT,HR_EMP,HR_DEP</param>
+	<param name="LOGIN_PLUGIN_TYPE">LDAP_LOGINPLUGIN:LDAP登录插件</param>
+	
+	<param name="ADMIN_ATT_MGR"> true </param>
+	<!--是否显示管理数据菜单   -->
+	<param name="MANAGER_DATA"> true </param>
+	<!--用户添加自定义参数 -->
+	<!--假期管理修改/删除时限为一天-->
+	<param name="AVAILABLE_TIME">86400000</param>
+
+	<param name="EMAIL_CONTENT_DIR">H:\Temp\email\service</param>
+	<!--邮箱域名,第一个为默认域名,多个域名用逗号隔开-->
+	<param name="EMAIL_DOMAIN_NAMES">hhxdtech.com.cn,hhdatabase.com.cn</param>
+	<param name="EMAIL_AUTH_CLASS">com.hh.oa.mail.plugin.AuthLoginPlugin</param>
+	<param name="EMAIL_SAVE_CLASS">com.hh.oa.mail.plugin.SaveEmailPlugin</param>
+	<param name="EMAIL_POSTMASTER">postmaster</param>
+	<param name="EMAIL_JKS_FILE">smtp.jks</param>
+	<param name="EMAIL_JKS_PASS">HHdb2o19</param>
 </config>

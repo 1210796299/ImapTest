@@ -64,6 +64,7 @@
         <!--</fileset>-->
         <!--</copy>-->
         <copy file="imap.sh" todir="${dist}"/>
+        <copy file="imap.bat" todir="${dist}"/>
     </target>
 
 

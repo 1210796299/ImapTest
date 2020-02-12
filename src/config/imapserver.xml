@@ -46,7 +46,7 @@
         <!-- Set to true to use TLS for the Socket.
               To use this you need to copy sunjce_provider.jar to /path/james/lib directory.
          -->
-        <tls socketTLS="true" startTLS="false">
+        <tls socketTLS="false" startTLS="false">
             <!-- To create a new keystore execute:
              keytool -genkey -alias james -keyalg RSA -keystore /path/to/james/conf/keystore
               -->
